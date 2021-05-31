@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Nuevo{% endblock %}
+
+{% block contenido %}
+<h1>Nuevo movimiento  </h1>
+<form action="nuevo" method="post">
+    <fieldset class="container">
+        {{ form.hidden_tag() }}
+
+        <div>
+            {{ form.fecha.label(class="mylabel") }}
+            {{ form.fecha( type="date") }}
+            {% for error in form.fecha.errors %}
+                <p class="msg-err">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </div>
+        <div >
+            {{ form.concepto.label(class="mylabel") }}
+            {{ form.concepto(placeholder="Razón del gasto") }}
+            {% for error in form.concepto.errors %}
+                <p class="msg-err">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </div>
+        <div >
+            {{ form.categoria.label(class="mylabel") }}
+            {{ form.categoria() }}
+            {% for error in form.categoria.errors %}
+                <p class="msg-err">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </div>
+        <div >
+            {{ form.cantidad.label(class="mylabel") }}
+            {{ form.cantidad() }}
+            {% for error in form.cantidad.errors %}
+                <p class="msg-err">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </div>
+        <div >
+            {{ form.esGasto.label(class="mylabel") }}
+            {{ form.esGasto() }}
+        </div>
+    </fieldset>
+    {{ form.submit()}}
+</form>
+
+{% endblock %}

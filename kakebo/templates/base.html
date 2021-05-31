@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kakebo | {% block titulo %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mini-default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"">
+</head>
+<body>
+    <header>
+        Kakebo Web - BZ VII
+    </header>
+    {% with mensajes = get_flashed_messages(with_categories = true) %}
+        {% if mensajes %}
+        <div class = "popup">
+            {% for tipo, mensaje in mensajes %}
+            <p class="{{tipo}}"">{{ mensaje }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
+
+    <section class="container">
+        {% block contenido %}{% endblock %}
+    </section>
+    <footer>
+        &copy; Todos los derechos reservados 2021 
+    </footer>
+</body>
+</html>
