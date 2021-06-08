@@ -1,14 +1,14 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block titulo %}Inicio{% endblock %}
+{% block titulo%}Inicio{%  endblock %}
 
 {% block contenido %}
-    <h1>Lista de movimientos <a href="/nuevo">Crear Movimiento</a> </h1>  
+    <h1>Listado de movimientos <a href="/nuevo">Crear movimiento</a> </h1>
     <table>
         <tr>
             <th>Fecha</th>
             <th>Concepto</th>
-            <th>Categoria</th>
+            <th>Categoría</th>
             <th>Tipo</th>
             <th>Cantidad</th>
             <th>Saldo</th>
@@ -28,10 +28,39 @@
             <td>{{ movimiento.cantidad }} €</td>
             <td>{{ movimiento.saldo }} €</td>
             <td class="btn">
-                <a href="/borrar/{{ movimiento.id }}">Borrar</a> ||
-                <a href="/modificar/{{ movimiento.id }}"> Modificar</a>
+                <a href="/borrar/{{ movimiento.id }}">Borrar</a> | 
+                <a href="/modificar/{{ movimiento.id }}">Modificar</a>
             </td>
         </tr>
         {% endfor %}
     </table>
+    <form action="/" method="post">
+        <fieldset class="container">
+            {{ formulario.hidden_tag() }}
+            <div>
+                {{ formulario.fechaDesde.label(class="mylabel")}}
+                {{ formulario.fechaDesde( type="date") }}
+                {% for error in formulario.fechaDesde.errors %}
+                <p class="msg-err">
+                    {{ error }}
+                </p>
+                {% endfor %}
+            </div>
+            <div>
+                {{ formulario.fechaHasta.label(class="mylabel")}}
+                {{ formulario.fechaHasta( type="date") }}
+                {% for error in formulario.fechaHasta.errors %}
+                <p class="msg-err">
+                    {{ error }}
+                </p>
+                {% endfor %}
+            </div>
+            <div>
+                {{ formulario.texto.label(class="mylabel") }}
+                {{ formulario.texto() }}
+            </div>
+        </fieldset>
+        {{ formulario.submit}}
+        <a href="/">Reset</a>
+    </form>
 {% endblock %}

@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
+
 {% block titulo %}Borrar{% endblock %}
 
 {% block contenido %}
-<h1> Borrar movimiento  </h1>
-<div>
+<h1>Borrar movimiento</h1>
+<div class="card">
     <form action="/borrar/{{ movimiento.id }}" method="post">
-
         <div>
             <label for="fecha">Fecha</label>
             <input  disabled type="text" name="fecha" value="{{ movimiento.fecha }}">
@@ -18,7 +18,7 @@
             <label for="categoria">Categoria</label>
             <input  disabled type="text" name="categoria" value="{{ movimiento.categoria }}">
         </div>
-        <div > 
+        <div >
             <label for="cantidad">Cantidad</label>
             <input  disabled type="text" name="cantidad" value="{{ movimiento.cantidad }}">
         </div>
@@ -33,5 +33,5 @@
 
 </div>
 
-
 {% endblock %}
+

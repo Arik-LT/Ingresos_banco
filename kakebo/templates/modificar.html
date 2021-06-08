@@ -1,51 +1,55 @@
 {% extends 'base.html' %}
+
 {% block titulo %}Modificar{% endblock %}
+
 {% block contenido %}
 <h1>Modificar movimiento  </h1>
-<form action="/modificar/{{ form.id.data }}" method="post">
+<formulario action="/modificar/{{ formulario.id.data }}" method="post">
     <fieldset class="container">
-        {{ form.hidden_tag() }}
+        {{ formulario.hidden_tag() }}
+
         <div>
-            {{ form.fecha.label(class="mylabel") }}
-            {{ form.fecha() }}
-            {% for error in form.fecha.errors %}
+            {{ formulario.fecha.label(class="mylabel") }}
+            {{ formulario.fecha( type="date") }}
+            {% for error in formulario.fecha.errors %}
                 <p class="msg-err">
                     {{ error }}
                 </p>
             {% endfor %}
         </div>
         <div >
-            {{ form.concepto.label(class="mylabel") }}
-            {{ form.concepto() }}
-            {% for error in form.concepto.errors %}
+            {{ formulario.concepto.label(class="mylabel") }}
+            {{ formulario.concepto(placeholder="Razón del gasto") }}
+            {% for error in formulario.concepto.errors %}
                 <p class="msg-err">
                     {{ error }}
                 </p>
             {% endfor %}
         </div>
         <div >
-            {{ form.categoria.label(class="mylabel") }}
-            {{ form.categoria() }}
-            {% for error in form.categoria.errors %}
+            {{ formulario.categoria.label(class="mylabel") }}
+            {{ formulario.categoria() }}
+            {% for error in formulario.categoria.errors %}
                 <p class="msg-err">
                     {{ error }}
                 </p>
             {% endfor %}
         </div>
         <div >
-            {{ form.cantidad.label(class="mylabel") }}
-            {{ form.cantidad() }}
-            {% for error in form.cantidad.errors %}
+            {{ formulario.cantidad.label(class="mylabel") }}
+            {{ formulario.cantidad() }}
+            {% for error in formulario.cantidad.errors %}
                 <p class="msg-err">
                     {{ error }}
                 </p>
             {% endfor %}
         </div>
         <div >
-            {{ form.esGasto.label(class="mylabel") }}
-            {{ form.esGasto() }}
+            {{ formulario.esGasto.label(class="mylabel") }}
+            {{ formulario.esGasto() }}
         </div>
     </fieldset>
-    {{ form.submit()}}
-</form>
+    {{ formulario.submit()}}
+</formulario>
+
 {% endblock %}
